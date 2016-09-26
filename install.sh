@@ -1,4 +1,13 @@
+
 # set up long running sudo
+echo "Sudo required for this script....enter password:"
+
+sudo -v
+while true; do
+	sudo -n true
+	sleep 60
+	kill -0 "$$" || exit
+done &> /dev/null &
 
 # Ensure XCode is installed
 if xcode-select --install 2>&1 | grep installed; then
