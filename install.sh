@@ -25,12 +25,11 @@ which -s brew
 if [[ $? != 0 ]] ; then
     # Install Homebrew
     echo "Brew not installed....installing"
-    # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
     echo "Brew Installed....updating"
     brew update
 fi
-
 
 # ------------------------------
 # Install Pip 
@@ -39,8 +38,8 @@ fi
 which -s pip
 if [[ $? != 0 ]] ; then
 	echo "Pip not installed.....installing"
-	# sudo easy_istall pip
-	# sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install pycrypto
+	sudo easy_istall pip
+	sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip install pycrypto
 else
 	echo "Pip already installed"
 fi
@@ -53,7 +52,7 @@ fi
 which -s ansible
 if [[ $? != 0 ]] ; then
 	echo "Ansible not installed....installing"
-	# brew install ansible
+	brew install ansible
 else
 	echo "Ansible already installed"
 fi
