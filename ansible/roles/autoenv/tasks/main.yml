@@ -1,0 +1,10 @@
+- name: Use brew-installed autoenv for OSX
+  homebrew: name=autoenv state=present
+  when: ansible_os_family == "Darwin"
+
+- name: Clone autoenv if not OSX
+  git: 
+    repo: https://github.com/kennethreitz/autoenv.git
+    dest: "{{ '~/.autoenv' | expanduser}}"
+    update: no
+  when: ansible_os_family != "Darwin"

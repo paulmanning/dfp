@@ -1,0 +1,29 @@
+#OSX Only
+#
+- name: Install tmux with homebrew
+  homebrew: name={{item}} state=latest
+  with_items:
+   - tmux
+   - reattach-to-user-namespace
+ 
+- name: Install tmuxinator
+  gem: name=tmuxinator state=latest
+  when: tmux_install_tmuxinator
+
+- name: Test for tpm
+  stat: path="{{dotfiles_user_home}}/.tmux/plugins/tpm/tpm"
+  register: tpm_file
+  
+
+- name: Install tpm
+  git: 
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{dotfiles_user_home}}/.tmux/plugins/tpm"
+  when: tpm_file.stat.exists == False
+
+- name: Symlink .tmux.conf
+  file: 
+    src: "{{ dotfiles_home}}/ansible/roles/tmux/files/tmux.conf"
+    dest: "{{ dotfiles_user_home}}/.tmux.conf"
+    state: link
+ 

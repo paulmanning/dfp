@@ -1,4 +1,13 @@
+
 # set up long running sudo
+echo "Sudo required for this script....enter password:"
+
+sudo -v
+while true; do
+	sudo -n true
+	sleep 60
+	kill -0 "$$" || exit
+done &> /dev/null &
 
 # Ensure XCode is installed
 if xcode-select --install 2>&1 | grep installed; then
@@ -49,3 +58,6 @@ else
 fi
 
 # run the main playbook
+export ANSIBLE_INVENTORY="./ansible/hosts"
+export ANSIBLE_NOCOWS=1
+ansible-playbook ansible/local_env.yml 
