@@ -59,3 +59,6 @@ else
 fi
 
 # run the main playbook
+export ANSIBLE_INVENTORY="./ansible/hosts"
+export ANSIBLE_NOCOWS=1
+ansible-playbook ansible/local_env.yml

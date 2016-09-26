@@ -1,0 +1,17 @@
+- name: Collecting Facts
+  hosts: local
+  gather_facts: yes
+
+- name: Set up base files
+  hosts: local
+  roles: 
+   
+  #- brew-base
+  # - brew-cask-base
+
+- name: Set up development files
+  hosts: local
+  roles: 
+  # - brew-dev
+  # - brew-cask-dev  
+   - autoenv
