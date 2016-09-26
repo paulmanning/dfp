@@ -1,0 +1,2 @@
+alias cat='ccat --bg=dark'
+alias ccat='ccat --bg=dark'

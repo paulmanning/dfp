@@ -1,0 +1,8 @@
+---
+system:
+  user: admin
+git:
+  name: Paul Manning
+  email: mortman1@gmail.com
+  github: paulmanning
+keep_updated: true
