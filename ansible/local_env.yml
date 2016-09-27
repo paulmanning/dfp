@@ -5,8 +5,7 @@
 - name: Set up base files
   hosts: local
   roles: 
-   
-  #- brew-base
+  - brew-base
   # - brew-cask-base
 
 - name: Set up development files
