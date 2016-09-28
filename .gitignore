@@ -36,3 +36,4 @@ Temporary Items
 
 .env
 .out
+*.retry
